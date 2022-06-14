@@ -7,12 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="button" onclick="computerPlay()" value = "Play">
     <script>
     function computerPlay() {
         let RPSnum = Math.random() * (3 - 1) + 1;
         RPSnum = Math.round(RPSnum);
-        console.log(RPSnum);
         let CompRPS = 0;
         if(RPSnum === 1) {
             CompRPS = "Rock";
@@ -21,13 +19,35 @@
             CompRPS = "Paper";
         }
         if(RPSnum === 3) {
-            CompRPS = "Scisors";
+            CompRPS = "Scissors";
         }
-        console.log(CompRPS);
         return CompRPS;
 }
-    let playerSelection = window.prompt("Rock, Paper or Scissors?: ");
+    const playerSelection = window.prompt("Rock, Paper or Scissors?: ");
     console.log(playerSelection);
+    const computerSelection = computerPlay ();
+    console.log(computerSelection);
+
+    function playRound(playerSelection, computerSelection) {
+        let winner = "0";
+        if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
+            winner = "It's a Tie!";
+            return winner;
+        }
+        if (playerSelection.toLowerCase() === "rock" && computerSelection.toLowerCase() === "paper" 
+        || playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "scissors" 
+        || playerSelection.toLowerCase() === "scissors" && computerSelection.toLowerCase() === "rock") {
+            winner = "You lose! " + computerSelection + " beats " + playerSelection + "!";
+            return winner;
+        }
+        if (playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "rock" 
+        || playerSelection.toLowerCase() === "scissors" && computerSelection.toLowerCase() === "paper" 
+        || playerSelection.toLowerCase() === "rock" && computerSelection.toLowerCase() === "scissors") {
+            winner = "You win! " + playerSelection + " beats " + computerSelection + "!";
+            return winner;
+        }
+    }
+    console.log(playRound(playerSelection, computerSelection));
     </script>
 </body>
 </html>
