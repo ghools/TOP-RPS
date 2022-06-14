@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" onclick="computerPlay()" value = "Display">
+    <script>
+    function computerPlay() {
+        let RPSnum = Math.random() * (3 - 1) + 1;
+        RPSnum = Math.round(RPSnum);
+        console.log(RPSnum);
+        let CompRPS;
+        if(RPSnum === 1) {
+            CompRPS === "Rock";
+            return CompRPS;
+        }
+        if(RPSnum === 2) {
+            CompRPS === "Paper";
+            return CompRPS;
+        }
+        if(RPSnum === 3) {
+            CompRPS === "Scisors";
+            return CompRPS;
+        }
+        console.log(CompRPS);
+}
+    </script>
+</body>
+</html>
