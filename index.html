@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="button" onclick="computerPlay()" value = "Display">
+    <input type="button" onclick="computerPlay()" value = "Play">
     <script>
     function computerPlay() {
         let RPSnum = Math.random() * (3 - 1) + 1;
@@ -24,7 +24,10 @@
             CompRPS = "Scisors";
         }
         console.log(CompRPS);
+        return CompRPS;
 }
+    let playerSelection = window.prompt("Rock, Paper or Scissors?: ");
+    console.log(playerSelection);
     </script>
 </body>
 </html>
