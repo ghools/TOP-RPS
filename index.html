@@ -34,22 +34,25 @@
         console.log(computerSelection);
         if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
             winner = 0;
+            alert("This round is a tie.")
             return winner;
         }
         if (playerSelection.toLowerCase() === "rock" && computerSelection.toLowerCase() === "paper" 
         || playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "scissors" 
         || playerSelection.toLowerCase() === "scissors" && computerSelection.toLowerCase() === "rock") {
             winner = 1;
+            alert("You lose this round " + computerSelection + " beats " + playerSelection);
             return winner;
         }
         if (playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "rock" 
         || playerSelection.toLowerCase() === "scissors" && computerSelection.toLowerCase() === "paper" 
         || playerSelection.toLowerCase() === "rock" && computerSelection.toLowerCase() === "scissors") {
             winner = 2;
+            alert("You win this round " + playerSelection + " beats " + computerSelection );
             return winner;
         }
         else {
-            winner = "Error"
+            winner = "2"
         }
     }
 
@@ -74,14 +77,17 @@
         console.log(computerScore)
         if (playerScore === computerScore) {
             winner = "It's a tie!";
+            alert("It's a Tie!");
             return winner;
         } 
         if (computerScore > playerScore) {
             winner = "You lose!";
+            alert("You lost the Game, sorry.");
             return winner;
         }
         if (playerScore > computerScore) {
             winner = "You Win!";
+            alert("You win the game!")
             return winner;
         }
     }
