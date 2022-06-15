@@ -52,7 +52,8 @@
             return winner;
         }
         else {
-            winner = "2"
+            winner = 2;
+            return winner;
         }
     }
 
@@ -77,7 +78,7 @@
         console.log(computerScore)
         if (playerScore === computerScore) {
             winner = "It's a tie!";
-            alert("It's a Tie!");
+            alert("The game is a Tie!");
             return winner;
         } 
         if (computerScore > playerScore) {
