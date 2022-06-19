@@ -1,23 +1,6 @@
-const container = document.querySelector(".container");
+let playerScore = 0;
+let computerScore = 0;
 
-const rockButton = document.createElement("button");
-rockButton.innerHTML = "Rock";
-rockButton.addEventListener("click", rockButtonPress);
-container.appendChild(rockButton);
-
-const paperButton = document.createElement("button");
-paperButton.innerHTML = "Paper";
-paperButton.addEventListener("click", paperButtonPress);
-container.appendChild(paperButton);
-
-const scissorsButton = document.createElement("button");
-scissorsButton.innerHTML = "Scissors";
-scissorsButton.addEventListener("click", scissorsButtonPress);
-container.appendChild(scissorsButton)
-
-
-const results = document.createElement("div");
-container.appendChild(results);
 
 let playerSelection;
 let computerSelection;
@@ -75,39 +58,69 @@ let winner = "0";
 computerSelection = computerPlay();
 console.log(playerSelection);
 if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
-    winner = 0;
     const roundTie = document.createElement("h3");
-    roundTie.textContent = "This rouns is a tie"
+    playerScore++;
+    computerScore++;
+    roundTie.textContent = `This rouns is a tie. The current score is; Computer: ${computerScore} and Player: ${playerScore}`; 
     results.appendChild(roundTie);
-    return winner;
 }
+
 if (playerSelection.toLowerCase() === "rock" && computerSelection.toLowerCase() === "paper" 
 || playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "scissors" 
 || playerSelection.toLowerCase() === "scissors" && computerSelection.toLowerCase() === "rock") {
-    winner = 1;
+    computerScore++;
     const roundLose = document.createElement("h3");
-    roundLose.textContent = "You lose this round " + computerSelection + " beats " + playerSelection
+    roundLose.textContent = "You lose this round, " + computerSelection + " beats " + playerSelection + `. The current score is; Computer: ${computerScore} and Player: ${playerScore}`;
     results.appendChild(roundLose);
-    return winner;
 }
+
 if (playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "rock" 
 || playerSelection.toLowerCase() === "scissors" && computerSelection.toLowerCase() === "paper" 
 || playerSelection.toLowerCase() === "rock" && computerSelection.toLowerCase() === "scissors") {
-    winner = 2;
+    playerScore++;
     const roundWin = document.createElement("h3");
-    roundWin.textContent = "You win this round " + playerSelection + " beats " + computerSelection
+    roundWin.textContent = "You win this round, " + playerSelection + " beats " + computerSelection + `. The current score is; Computer: ${computerScore} and Player: ${playerScore}`;
     results.appendChild(roundWin);
-    return winner;
+    
 }
 else {
     winner = 2;
     return winner;
 }
 }
+const container = document.querySelector(".container");
 
-/*function game (playerSelection, computerSelection) {
-let playerScore = 0;
-let computerScore  = 0;
+const rockButton = document.createElement("button");
+rockButton.innerHTML = "Rock";
+rockButton.addEventListener("click", rockButtonPress);
+container.appendChild(rockButton);
+
+const paperButton = document.createElement("button");
+paperButton.innerHTML = "Paper";
+paperButton.addEventListener("click", paperButtonPress);
+container.appendChild(paperButton);
+
+const scissorsButton = document.createElement("button");
+scissorsButton.innerHTML = "Scissors";
+scissorsButton.addEventListener("click", scissorsButtonPress);
+container.appendChild(scissorsButton)
+
+const scorebox = document.createElement("div");
+scorebox.style.border = "solid";
+container.appendChild(scorebox);
+
+const playerScoreVis = document.createElement("div");
+playerScoreVis.textContent = `Player score: ${playerScore}`;
+scorebox.appendChild(playerScoreVis);
+
+const computerScoreVis = document.createElement("div");
+computerScoreVis.textContent = `Computer score: ${computerScore}`;
+scorebox.appendChild(computerScoreVis);
+
+const results = document.createElement("div");
+container.appendChild(results);
+
+/*function game () {
 let winner = "0";
 for (let i = 0; i < 5; i++) {
     let winner = playRound(playerSelection, computerSelection);
@@ -139,6 +152,6 @@ if (playerScore > computerScore) {
     alert("You win the game!")
     return winner;
 }
-}*/
+}
 
-//console.log(game(playerSelection, computerSelection));
+//console.log(game(playerSelection, computerSelection));*/
