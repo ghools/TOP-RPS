@@ -16,6 +16,9 @@ scissorsButton.addEventListener("click", scissorsButtonPress);
 container.appendChild(scissorsButton)
 
 
+const results = document.createElement("div");
+container.appendChild(results);
+
 let playerSelection;
 let computerSelection;
 
@@ -26,7 +29,7 @@ function rockButtonPress() {
 
 function rockSelect () {
     playerSelection = "Rock";
-    console.log(playerSelection);
+    return playerSelection;
 }
 
 function paperButtonPress() {
@@ -36,7 +39,7 @@ function paperButtonPress() {
 
 function paperSelect () {
     playerSelection = "Paper";
-    console.log(playerSelection);
+    return playerSelection;
 }
 
 
@@ -47,7 +50,7 @@ function scissorsButtonPress() {
 
 function scissorsSelect () {
     playerSelection = "Scissors";
-    console.log(playerSelection);
+    return playerSelection;
 }
 
 
@@ -67,26 +70,33 @@ function computerPlay() {
     return CompRPS;
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound() {
 let winner = "0";
 computerSelection = computerPlay();
+console.log(playerSelection);
 if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
     winner = 0;
-    alert("This round is a tie.")
+    const roundTie = document.createElement("h3");
+    roundTie.textContent = "This rouns is a tie"
+    results.appendChild(roundTie);
     return winner;
 }
 if (playerSelection.toLowerCase() === "rock" && computerSelection.toLowerCase() === "paper" 
 || playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "scissors" 
 || playerSelection.toLowerCase() === "scissors" && computerSelection.toLowerCase() === "rock") {
     winner = 1;
-    alert("You lose this round " + computerSelection + " beats " + playerSelection);
+    const roundLose = document.createElement("h3");
+    roundLose.textContent = "You lose this round " + computerSelection + " beats " + playerSelection
+    results.appendChild(roundLose);
     return winner;
 }
 if (playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "rock" 
 || playerSelection.toLowerCase() === "scissors" && computerSelection.toLowerCase() === "paper" 
 || playerSelection.toLowerCase() === "rock" && computerSelection.toLowerCase() === "scissors") {
     winner = 2;
-    alert("You win this round " + playerSelection + " beats " + computerSelection );
+    const roundWin = document.createElement("h3");
+    roundWin.textContent = "You win this round " + playerSelection + " beats " + computerSelection
+    results.appendChild(roundWin);
     return winner;
 }
 else {
