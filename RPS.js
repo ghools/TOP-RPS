@@ -1,27 +1,75 @@
+const container = document.querySelector(".container");
+
+const rockButton = document.createElement("button");
+rockButton.innerHTML = "Rock";
+rockButton.addEventListener("click", rockButtonPress);
+container.appendChild(rockButton);
+
+const paperButton = document.createElement("button");
+paperButton.innerHTML = "Paper";
+paperButton.addEventListener("click", paperButtonPress);
+container.appendChild(paperButton);
+
+const scissorsButton = document.createElement("button");
+scissorsButton.innerHTML = "Scissors";
+scissorsButton.addEventListener("click", scissorsButtonPress);
+container.appendChild(scissorsButton)
+
+
 let playerSelection;
 let computerSelection;
 
+function rockButtonPress() {
+    rockSelect();
+    playRound();
+}
+
+function rockSelect () {
+    playerSelection = "Rock";
+    console.log(playerSelection);
+}
+
+function paperButtonPress() {
+    paperSelect();
+    playRound();
+}
+
+function paperSelect () {
+    playerSelection = "Paper";
+    console.log(playerSelection);
+}
+
+
+function scissorsButtonPress() {
+    scissorsSelect();
+    playRound();
+}
+
+function scissorsSelect () {
+    playerSelection = "Scissors";
+    console.log(playerSelection);
+}
+
+
 function computerPlay() {
-let RPSnum = Math.random() * (3 - 1) + 1;
-RPSnum = Math.round(RPSnum);
-let CompRPS = 0;
-if(RPSnum === 1) {
-    CompRPS = "Rock";
-}
-if(RPSnum === 2) {
-    CompRPS = "Paper";
-}
-if(RPSnum === 3) {
-    CompRPS = "Scissors";
-}
-return CompRPS;
+    let RPSnum = Math.random() * (3 - 1) + 1;
+    RPSnum = Math.round(RPSnum);
+    let CompRPS = 0;
+    if(RPSnum === 1) {
+        CompRPS = "Rock";
+    }
+    if(RPSnum === 2) {
+        CompRPS = "Paper";
+    }
+    if(RPSnum === 3) {
+        CompRPS = "Scissors";
+    }
+    return CompRPS;
 }
 
 function playRound(playerSelection, computerSelection) {
 let winner = "0";
-playerSelection = window.prompt("Rock, Paper or Scissors?: ");
 computerSelection = computerPlay();
-console.log(computerSelection);
 if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
     winner = 0;
     alert("This round is a tie.")
@@ -47,7 +95,7 @@ else {
 }
 }
 
-function game (playerSelection, computerSelection) {
+/*function game (playerSelection, computerSelection) {
 let playerScore = 0;
 let computerScore  = 0;
 let winner = "0";
@@ -81,6 +129,6 @@ if (playerScore > computerScore) {
     alert("You win the game!")
     return winner;
 }
-}
+}*/
 
-console.log(game(playerSelection, computerSelection));
+//console.log(game(playerSelection, computerSelection));
