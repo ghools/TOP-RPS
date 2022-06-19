@@ -8,6 +8,7 @@ let computerSelection;
 function rockButtonPress() {
     rockSelect();
     playRound();
+    winner();
 }
 
 function rockSelect () {
@@ -18,6 +19,7 @@ function rockSelect () {
 function paperButtonPress() {
     paperSelect();
     playRound();
+    winner();
 }
 
 function paperSelect () {
@@ -29,6 +31,7 @@ function paperSelect () {
 function scissorsButtonPress() {
     scissorsSelect();
     playRound();
+    winner();
 }
 
 function scissorsSelect () {
@@ -54,14 +57,13 @@ function computerPlay() {
 }
 
 function playRound() {
-let winner = "0";
 computerSelection = computerPlay();
 console.log(playerSelection);
 if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
     const roundTie = document.createElement("h3");
     playerScore++;
     computerScore++;
-    roundTie.textContent = `This rouns is a tie. The current score is; Computer: ${computerScore} and Player: ${playerScore}`; 
+    roundTie.textContent = `This round is a tie. The current score is; Computer: ${computerScore} and Player: ${playerScore}`; 
     results.appendChild(roundTie);
 }
 
@@ -83,10 +85,20 @@ if (playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase()
     results.appendChild(roundWin);
     
 }
-else {
-    winner = 2;
-    return winner;
 }
+function winner () {
+    if (playerScore && computerScore === 5){
+        alert("The game is over! It's Tie!");
+    }
+    
+    if (playerScore > computerScore && playerScore === 5) {
+        alert("The game is over! You win!");
+    }
+    
+    if (computerScore > playerScore && computerScore === 5) {
+        alert("The game is over! The computer wins!");
+    }
+    else {return}
 }
 const container = document.querySelector(".container");
 
@@ -104,18 +116,6 @@ const scissorsButton = document.createElement("button");
 scissorsButton.innerHTML = "Scissors";
 scissorsButton.addEventListener("click", scissorsButtonPress);
 container.appendChild(scissorsButton)
-
-const scorebox = document.createElement("div");
-scorebox.style.border = "solid";
-container.appendChild(scorebox);
-
-const playerScoreVis = document.createElement("div");
-playerScoreVis.textContent = `Player score: ${playerScore}`;
-scorebox.appendChild(playerScoreVis);
-
-const computerScoreVis = document.createElement("div");
-computerScoreVis.textContent = `Computer score: ${computerScore}`;
-scorebox.appendChild(computerScoreVis);
 
 const results = document.createElement("div");
 container.appendChild(results);
