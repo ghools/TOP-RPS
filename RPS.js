@@ -119,39 +119,3 @@ container.appendChild(scissorsButton)
 
 const results = document.createElement("div");
 container.appendChild(results);
-
-/*function game () {
-let winner = "0";
-for (let i = 0; i < 5; i++) {
-    let winner = playRound(playerSelection, computerSelection);
-    if (winner === 0) {
-        playerScore++;
-        computerScore++;
-    }
-    if (winner === 1) {
-        computerScore++;
-    }
-    if (winner === 2) {
-        playerScore++;
-    }
-}
-console.log(playerScore)
-console.log(computerScore)
-if (playerScore === computerScore) {
-    winner = "It's a tie!";
-    alert("The game is a Tie!");
-    return winner;
-} 
-if (computerScore > playerScore) {
-    winner = "You lose!";
-    alert("You lost the Game, sorry.");
-    return winner;
-}
-if (playerScore > computerScore) {
-    winner = "You Win!";
-    alert("You win the game!")
-    return winner;
-}
-}
-
-//console.log(game(playerSelection, computerSelection));*/
